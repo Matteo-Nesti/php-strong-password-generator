@@ -1,9 +1,9 @@
 <?php
+include __DIR__ . '/./functions/random_character_generator.php';
 
 $characters_number = $_GET['characters_number'] ?? '';
+$message = 'valori non validi';
 
-
-include __DIR__ . '/./functions/random_character_generator.php';
 
 
 
@@ -22,7 +22,7 @@ include __DIR__ . '/./functions/random_character_generator.php';
 <body>
     <div class="container">
 
-        <form>
+        <form novalidate>
             <div class="mb-3">
                 <label for="password_generator" class="form-label">Quanti caratteri vuoi per la tua password?</label>
                 <input type="number" class="form-control" id="password_generator" name="characters_number">
@@ -32,7 +32,9 @@ include __DIR__ . '/./functions/random_character_generator.php';
         </form>
 
         <h1>La tua password e`:</h1>
-        <p><?= random_password_generator($characters_number) ?></p>
+        <p>
+            <?= is_numeric($characters_number) ? random_password_generator($characters_number) : $message ?>
+        </p>
     </div>
 </body>
 
