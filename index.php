@@ -1,5 +1,5 @@
 <?php
-$characters_number = $_GET['characters_number'] ?? '';
+$characters_number = $_GET['characters_number'];
 
 include __DIR__ . '/./functions/random_character_generator.php';
 ?>
@@ -19,8 +19,10 @@ include __DIR__ . '/./functions/random_character_generator.php';
 
         <form novalidate>
             <div class="mb-3">
-                <label for="password_generator" class="form-label">Quanti caratteri vuoi per la tua password?</label>
-                <input type="number" class="form-control" id="password_generator" name="characters_number">
+                <label for="password_generator" class="form-label">
+                    inserisci un numero per decidere la lunghezza della tua passwword
+                </label>
+                <input type="text" class="form-control" id="password_generator" name="characters_number">
             </div>
 
             <button type="submit" class="btn btn-primary">Genera</button>
@@ -28,7 +30,7 @@ include __DIR__ . '/./functions/random_character_generator.php';
 
         <h1>La tua password e`:</h1>
         <p>
-            <?= random_password_generator($characters_number) ?>
+            <?= $characters_number ? random_password_generator($characters_number) : '' ?>
         </p>
     </div>
 </body>
