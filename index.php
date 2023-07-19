@@ -1,12 +1,7 @@
 <?php
-include __DIR__ . '/./functions/random_character_generator.php';
-
 $characters_number = $_GET['characters_number'] ?? '';
-$message = 'valori non validi';
 
-
-
-
+include __DIR__ . '/./functions/random_character_generator.php';
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +28,7 @@ $message = 'valori non validi';
 
         <h1>La tua password e`:</h1>
         <p>
-            <?= is_numeric($characters_number) ? random_password_generator($characters_number) : $message ?>
+            <?= random_password_generator($characters_number) ?>
         </p>
     </div>
 </body>
