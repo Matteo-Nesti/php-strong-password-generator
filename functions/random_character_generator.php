@@ -13,5 +13,5 @@ if (is_numeric($characters_number)) {
         return $random_str;
     }
 } else {
-    $message = 'valori non validi';
+    return $message = 'valori non validi';
 }
