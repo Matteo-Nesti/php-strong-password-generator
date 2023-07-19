@@ -9,18 +9,15 @@ $characters_number = $_SESSION['characters_number'];
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<?php include __DIR__ . '/./components/head.php' ?>
 
 <body>
-
-    <h1>La tua password e`:</h1>
-    <p>
-        <?= random_password_generator($characters_number) ?>
-    </p>
+    <div class="container text-center mt-5 result_container">
+        <h1 class="text-success">La tua password e`:</h1>
+        <p class="fs-1 text-warning">
+            <?= random_password_generator($characters_number) ?>
+        </p>
+    </div>
 </body>
 
 </html>

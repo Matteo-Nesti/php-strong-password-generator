@@ -3,7 +3,7 @@
 session_start();
 
 $message = '';
-$characters_number = $_GET['characters_number'];
+$characters_number = $_GET['characters_number'] ?? '';
 
 
 if ($characters_number && is_numeric($characters_number)) {
@@ -18,27 +18,22 @@ if ($characters_number && is_numeric($characters_number)) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title><?= $page_title ?? 'Generatore super sicuro per password mega-galattiche' ?></title>
-</head>
+<?php include __DIR__ . '/./components/head.php' ?>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
 
-        <form novalidate>
-            <div class="mb-3">
-                <label for="password_generator" class="form-label">
+        <form novalidate class="text-center">
+            <div class="mb-3 ">
+                <label for="password_generator" class="form-label fs-3">
                     inserisci un numero per decidere la lunghezza della tua password
                 </label>
-                <input type="text" class="form-control" id="password_generator" name="characters_number">
+                <input type="text" class="form-control w-50 mx-auto" id="password_generator" name="characters_number">
             </div>
 
-            <button type="submit" class="btn btn-primary">Genera</button>
+            <button type="submit" class="btn btn-lg btn-primary ">Genera</button>
         </form>
-        <h2><?= $message ?></h2>
+        <h2 class="text-center text-danger"><?= $message ?></h2>
     </div>
 </body>
 
