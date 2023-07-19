@@ -1,12 +1,19 @@
 <?php
 
-$characters_number = $_GET['characters_number'];
+$characters_number = $_GET['characters_number'] ?? '';
 
 
 function random_password_generator($lenght)
 {
-    $characters_str = 'abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*';
+    $characters_str = 'abcdefgh!@#ABCtuvwD345678EFGH$%^RSTU&*ijklmoLMNOPpqrsxyzIJKQVWXYZ1290';
+    $random_str = '';
+    for ($i = 0; $i < $lenght; $i++) {
+        $random_str .= $characters_str[rand(0, $lenght)];
+    }
+    return $random_str;
 }
+
+
 
 ?>
 
@@ -31,6 +38,9 @@ function random_password_generator($lenght)
 
             <button type="submit" class="btn btn-primary">Genera</button>
         </form>
+
+        <h1>La tua password e`:</h1>
+        <p><?= random_password_generator($characters_number) ?></p>
     </div>
 </body>
 
