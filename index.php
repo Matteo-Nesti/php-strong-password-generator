@@ -1,7 +1,18 @@
 <?php
+
+session_start();
+
+$message = '';
 $characters_number = $_GET['characters_number'];
 
-include __DIR__ . '/./functions/random_character_generator.php';
+
+if ($characters_number && is_numeric($characters_number)) {
+    $_SESSION['characters_number'] = $characters_number;
+    header("Location:./result.php");
+    exit();
+} elseif ($characters_number) {
+    $message = 'inserisci un valore valido';
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,18 +31,14 @@ include __DIR__ . '/./functions/random_character_generator.php';
         <form novalidate>
             <div class="mb-3">
                 <label for="password_generator" class="form-label">
-                    inserisci un numero per decidere la lunghezza della tua passwword
+                    inserisci un numero per decidere la lunghezza della tua password
                 </label>
                 <input type="text" class="form-control" id="password_generator" name="characters_number">
             </div>
 
             <button type="submit" class="btn btn-primary">Genera</button>
         </form>
-
-        <h1>La tua password e`:</h1>
-        <p>
-            <?= $characters_number ? random_password_generator($characters_number) : '' ?>
-        </p>
+        <h2><?= $message ?></h2>
     </div>
 </body>
 
